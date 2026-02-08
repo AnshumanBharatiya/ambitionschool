@@ -302,3 +302,21 @@ if (videosGrid) {
 
 console.log('🎓 Ambition Residential School website loaded successfully!');
 console.log('✅ YouTube videos are now embedded and playable!');
+
+
+const stickyButtons = document.getElementById('stickyButtons');
+const heroSection = document.querySelector('.hero');
+
+if (stickyButtons && heroSection) {
+    window.addEventListener('scroll', () => {
+        const heroHeight = heroSection.offsetHeight;
+        const scrollPosition = window.pageYOffset;
+        
+        // Show buttons when user scrolls past hero section
+        if (scrollPosition > heroHeight) {
+            stickyButtons.classList.add('show');
+        } else {
+            stickyButtons.classList.remove('show');
+        }
+    });
+}
