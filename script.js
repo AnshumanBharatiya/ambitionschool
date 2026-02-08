@@ -108,7 +108,7 @@ ${message ? `ମେସେଜ୍: ${message}` : ''}`;
         
         // Encode message for WhatsApp
         const encodedMessage = encodeURIComponent(whatsappMessage);
-        const whatsappURL = `https://wa.me/917377311806?text=${encodedMessage}`;
+        const whatsappURL = `https://wa.me/9348250839?text=${encodedMessage}`;
         
         // Open WhatsApp
         window.open(whatsappURL, '_blank');
@@ -199,3 +199,106 @@ window.addEventListener('load', () => {
         document.body.style.opacity = '1';
     }, 100);
 });
+
+// Gallery Tabs Functionality
+const galleryTabs = document.querySelectorAll('.gallery-tab');
+const galleryItems = document.querySelectorAll('.gallery-item');
+
+galleryTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Remove active class from all tabs
+        galleryTabs.forEach(t => t.classList.remove('active'));
+        // Add active class to clicked tab
+        tab.classList.add('active');
+        
+        const category = tab.getAttribute('data-category');
+        
+        // Filter gallery items
+        galleryItems.forEach(item => {
+            if (category === 'all' || item.getAttribute('data-category') === category) {
+                item.classList.remove('hidden');
+                // Add fade in animation
+                item.style.animation = 'fadeIn 0.5s ease';
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+    });
+});
+
+// Teachers Section Scroll
+const teachersGrid = document.querySelector('.teachers-grid');
+const scrollLeftBtn = document.querySelector('.scroll-left');
+const scrollRightBtn = document.querySelector('.scroll-right');
+
+if (scrollLeftBtn && teachersGrid) {
+    scrollLeftBtn.addEventListener('click', () => {
+        teachersGrid.scrollBy({
+            left: -300,
+            behavior: 'smooth'
+        });
+    });
+}
+
+if (scrollRightBtn && teachersGrid) {
+    scrollRightBtn.addEventListener('click', () => {
+        teachersGrid.scrollBy({
+            left: 300,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// Videos Section Scroll
+const videosGrid = document.querySelector('.videos-grid');
+const scrollLeftVideoBtn = document.querySelector('.scroll-left-video');
+const scrollRightVideoBtn = document.querySelector('.scroll-right-video');
+
+if (scrollLeftVideoBtn && videosGrid) {
+    scrollLeftVideoBtn.addEventListener('click', () => {
+        videosGrid.scrollBy({
+            left: -300,
+            behavior: 'smooth'
+        });
+    });
+}
+
+if (scrollRightVideoBtn && videosGrid) {
+    scrollRightVideoBtn.addEventListener('click', () => {
+        videosGrid.scrollBy({
+            left: 300,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// Auto-hide/show scroll buttons based on scroll position
+function updateScrollButtons(container, leftBtn, rightBtn) {
+    if (!container || !leftBtn || !rightBtn) return;
+    
+    const scrollLeft = container.scrollLeft;
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    
+    leftBtn.style.opacity = scrollLeft > 0 ? '1' : '0.3';
+    leftBtn.style.pointerEvents = scrollLeft > 0 ? 'auto' : 'none';
+    
+    rightBtn.style.opacity = scrollLeft < maxScroll - 10 ? '1' : '0.3';
+    rightBtn.style.pointerEvents = scrollLeft < maxScroll - 10 ? 'auto' : 'none';
+}
+
+if (teachersGrid) {
+    teachersGrid.addEventListener('scroll', () => {
+        updateScrollButtons(teachersGrid, scrollLeftBtn, scrollRightBtn);
+    });
+    updateScrollButtons(teachersGrid, scrollLeftBtn, scrollRightBtn);
+}
+
+if (videosGrid) {
+    videosGrid.addEventListener('scroll', () => {
+        updateScrollButtons(videosGrid, scrollLeftVideoBtn, scrollRightVideoBtn);
+    });
+    updateScrollButtons(videosGrid, scrollLeftVideoBtn, scrollRightVideoBtn);
+}
+
+console.log('🎓 Ambition Residential School website loaded successfully!');
+console.log('✅ YouTube videos are now embedded and playable!');
