@@ -108,7 +108,7 @@ ${message ? `ମେସେଜ୍: ${message}` : ''}`;
         
         // Encode message for WhatsApp
         const encodedMessage = encodeURIComponent(whatsappMessage);
-        const whatsappURL = `https://wa.me/9348250839?text=${encodedMessage}`;
+        const whatsappURL = `https://wa.me/7377311806?text=${encodedMessage}`;
         
         // Open WhatsApp
         window.open(whatsappURL, '_blank');
