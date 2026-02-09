@@ -179,7 +179,7 @@ if ('IntersectionObserver' in window) {
 document.querySelectorAll('a[href^="tel:"]').forEach(tel => {
     tel.addEventListener('click', (e) => {
         // Analytics or tracking can be added here
-        console.log('Phone call initiated:', tel.href);
+        // console.log('Phone call initiated:', tel.href);
     });
 });
 
@@ -300,8 +300,8 @@ if (videosGrid) {
     updateScrollButtons(videosGrid, scrollLeftVideoBtn, scrollRightVideoBtn);
 }
 
-console.log('🎓 Ambition Residential School website loaded successfully!');
-console.log('✅ YouTube videos are now embedded and playable!');
+// console.log('🎓 Ambition Residential School website loaded successfully!');
+// console.log('✅ YouTube videos are now embedded and playable!');
 
 
 const stickyButtons = document.getElementById('stickyButtons');
